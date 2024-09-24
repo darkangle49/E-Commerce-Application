@@ -1,0 +1,58 @@
+server: 
+ port: 9191
+
+spring:
+  application:
+    name: API_GATE
+    
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+            
+            
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: USER-SERVICE
+                fallbackuri: forward:/swag/userServiceFallBack
+        - id: CATALOG
+          uri: lb://CATALOG
+          predicates:
+            - Path=/catalog/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: 
+                fallbackuri: forward:/swag/catalogServiceFallBack
+        - id: ORDER-SERVICE
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/orders/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: 
+                fallbackuri: forward:/swag/orderServiceFallBack
+        
+       
+  hystrix:
+   command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000     
+        
+      
+eureka:
+  client:
+   register-with-eureka: true
+   fetch-registry: true
+   service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost    
