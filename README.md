@@ -18,13 +18,12 @@ The application consists of the following microservices:
 ## Technologies Used
 
 - **Programming Languages:** Java
-- **Frameworks:** Spring Boot, Spring Cloud
+- **Frameworks:** Spring Boot, Spring Cloud, Spring Security
 - **Service Discovery:** Eureka
 - **API Gateway:** Spring Cloud Gateway
-- **Database:** MySQL/PostgreSQL
-- **Messaging Queue:** RabbitMQ/Kafka (if applicable)
+- **Database:** MongoDB 
+- **Messaging Queue:** RabbitMQ
 - **Containerization:** Docker
-- **Orchestration:** Kubernetes
 
 ## Prerequisites
 
@@ -33,8 +32,7 @@ Ensure you have the following installed before running the application:
 - JDK 11 or higher  
 - Docker  
 - Maven  
-- PostgreSQL/MySQL (or configured database)  
-- Any required API keys or environment variables  
+- MongoDB
 
 ## Installation and Setup
 
