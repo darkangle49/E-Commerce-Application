@@ -35,13 +35,6 @@ import com.catalog.repository.CategoryRepository;
 import com.catalog.service.ProductService;
 
 
-
-
-
-
-
-
-
 @RestController
 @RequestMapping(value = "/catalog")
 public class ProductController {
@@ -193,4 +186,5 @@ ResponseEntity<String> authenticationResponse ;
 		List<Category> cat=catRepo.findAll();
 		return cat;
 	}
+
 }
